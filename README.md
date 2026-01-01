@@ -1,7 +1,7 @@
 
 # Learning Addition with Transformers
 
-A study investigating whether transformers learn arithmetic algorithms or memorize positional patterns through experiments on k-digit addition. This READme was authored with Cursor (Claude Sonnet Model)
+This is a work task project investigating whether transformers learn arithmetic algorithms or memorize positional patterns through experiments on k-digit addition. This ReadMe was authored with Cursor Pro using the Claude Sonnet Model. 
 
 ## Key Question
 

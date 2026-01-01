@@ -1,0 +1,1 @@
+# Baseline Experiment: k=3 Only Training\n\nTrained on 50K k=3 examples only.\n\n## Files\n- checkpoints/: Model weights\n- results.json: Evaluation metrics\n- train.json: Training data\n- val.json: Validation data

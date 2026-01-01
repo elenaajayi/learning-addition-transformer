@@ -1,0 +1,283 @@
+{
+  "checkpoint_info": {
+    "epoch": 49,
+    "val_loss": 1.0977915138006211,
+    "val_accuracy": 0.0
+  },
+  "device": "cuda",
+  "results": {
+    "in_distribution": {
+      "total": 10000,
+      "correct": 9483,
+      "accuracy": 94.83,
+      "carry_total": 8633,
+      "carry_correct": 8144,
+      "carry_accuracy": 94.3356886366269,
+      "no_carry_total": 1367,
+      "no_carry_correct": 1339,
+      "no_carry_accuracy": 97.95171909290417,
+      "sample_correct": [
+        {
+          "input": "787+999=",
+          "expected": "1786",
+          "predicted": "1786"
+        },
+        {
+          "input": "883+270=",
+          "expected": "1153",
+          "predicted": "1153"
+        },
+        {
+          "input": "622+269=",
+          "expected": "891",
+          "predicted": "891"
+        },
+        {
+          "input": "285+557=",
+          "expected": "842",
+          "predicted": "842"
+        },
+        {
+          "input": "109+508=",
+          "expected": "617",
+          "predicted": "617"
+        }
+      ],
+      "sample_incorrect": [
+        {
+          "input": "687+252=",
+          "expected": "939",
+          "predicted": "949"
+        },
+        {
+          "input": "285+764=",
+          "expected": "1049",
+          "predicted": "1059"
+        },
+        {
+          "input": "899+761=",
+          "expected": "1660",
+          "predicted": "1650"
+        },
+        {
+          "input": "526+814=",
+          "expected": "1340",
+          "predicted": "1330"
+        },
+        {
+          "input": "532+618=",
+          "expected": "1150",
+          "predicted": "1140"
+        }
+      ]
+    },
+    "length_gen_k4": {
+      "total": 1000,
+      "correct": 0,
+      "accuracy": 0.0,
+      "carry_total": 922,
+      "carry_correct": 0,
+      "carry_accuracy": 0.0,
+      "no_carry_total": 78,
+      "no_carry_correct": 0,
+      "no_carry_accuracy": 0.0,
+      "sample_correct": [],
+      "sample_incorrect": [
+        {
+          "input": "2824+1409=",
+          "expected": "4233",
+          "predicted": "6"
+        },
+        {
+          "input": "5506+5012=",
+          "expected": "10518",
+          "predicted": "00"
+        },
+        {
+          "input": "4657+3286=",
+          "expected": "7943",
+          "predicted": "7"
+        },
+        {
+          "input": "2679+9935=",
+          "expected": "12614",
+          "predicted": "66"
+        },
+        {
+          "input": "2424+7912=",
+          "expected": "10336",
+          "predicted": "21"
+        }
+      ]
+    },
+    "length_gen_k5": {
+      "total": 1000,
+      "correct": 0,
+      "accuracy": 0.0,
+      "carry_total": 960,
+      "carry_correct": 0,
+      "carry_accuracy": 0.0,
+      "no_carry_total": 40,
+      "no_carry_correct": 0,
+      "no_carry_accuracy": 0.0,
+      "sample_correct": [],
+      "sample_incorrect": [
+        {
+          "input": "69552+94058=",
+          "expected": "163610",
+          "predicted": ""
+        },
+        {
+          "input": "81211+78723=",
+          "expected": "159934",
+          "predicted": ""
+        },
+        {
+          "input": "74738+27589=",
+          "expected": "102327",
+          "predicted": ""
+        },
+        {
+          "input": "76088+71344=",
+          "expected": "147432",
+          "predicted": ""
+        },
+        {
+          "input": "45761+35272=",
+          "expected": "81033",
+          "predicted": ""
+        }
+      ]
+    },
+    "shift_nines": {
+      "total": 378,
+      "correct": 356,
+      "accuracy": 94.17989417989418,
+      "carry_total": 378,
+      "carry_correct": 356,
+      "carry_accuracy": 94.17989417989418,
+      "no_carry_total": 0,
+      "no_carry_correct": 0,
+      "no_carry_accuracy": null,
+      "sample_correct": [
+        {
+          "input": "899+992=",
+          "expected": "1891",
+          "predicted": "1891"
+        },
+        {
+          "input": "995+959=",
+          "expected": "1954",
+          "predicted": "1954"
+        },
+        {
+          "input": "909+499=",
+          "expected": "1408",
+          "predicted": "1408"
+        },
+        {
+          "input": "979+999=",
+          "expected": "1978",
+          "predicted": "1978"
+        },
+        {
+          "input": "799+799=",
+          "expected": "1598",
+          "predicted": "1598"
+        }
+      ],
+      "sample_incorrect": [
+        {
+          "input": "949+998=",
+          "expected": "1947",
+          "predicted": "1948"
+        },
+        {
+          "input": "979+991=",
+          "expected": "1970",
+          "predicted": "1960"
+        },
+        {
+          "input": "909+990=",
+          "expected": "1899",
+          "predicted": "1999"
+        },
+        {
+          "input": "909+998=",
+          "expected": "1907",
+          "predicted": "1908"
+        },
+        {
+          "input": "929+998=",
+          "expected": "1927",
+          "predicted": "1928"
+        }
+      ]
+    },
+    "shift_small": {
+      "total": 1000,
+      "correct": 922,
+      "accuracy": 92.2,
+      "carry_total": 685,
+      "carry_correct": 615,
+      "carry_accuracy": 89.78102189781022,
+      "no_carry_total": 315,
+      "no_carry_correct": 307,
+      "no_carry_accuracy": 97.46031746031746,
+      "sample_correct": [
+        {
+          "input": "104+124=",
+          "expected": "228",
+          "predicted": "228"
+        },
+        {
+          "input": "157+136=",
+          "expected": "293",
+          "predicted": "293"
+        },
+        {
+          "input": "165+145=",
+          "expected": "310",
+          "predicted": "310"
+        },
+        {
+          "input": "144+178=",
+          "expected": "322",
+          "predicted": "322"
+        },
+        {
+          "input": "133+168=",
+          "expected": "301",
+          "predicted": "301"
+        }
+      ],
+      "sample_incorrect": [
+        {
+          "input": "199+137=",
+          "expected": "336",
+          "predicted": "337"
+        },
+        {
+          "input": "188+141=",
+          "expected": "329",
+          "predicted": "339"
+        },
+        {
+          "input": "190+139=",
+          "expected": "329",
+          "predicted": "339"
+        },
+        {
+          "input": "107+173=",
+          "expected": "280",
+          "predicted": "270"
+        },
+        {
+          "input": "195+164=",
+          "expected": "359",
+          "predicted": "369"
+        }
+      ]
+    }
+  }
+}

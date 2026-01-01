@@ -141,14 +141,15 @@ def create_dataloaders(
         Tuple of (train_loader, val_loader)
     """
     # Create datasets
+    # Use mixed k=3,4 data for length generalization experiment
     train_dataset = AdditionDataset(
-        data_path=DataConfig.TRAIN_FILE,
+        data_path="data/train_mixed.json",  # Mixed k=3,4 training data
         tokenizer=tokenizer,
         max_seq_len=max_seq_len
     )
     
     val_dataset = AdditionDataset(
-        data_path=DataConfig.VAL_FILE,
+        data_path="data/val_mixed.json",  # Mixed k=3,4 validation data
         tokenizer=tokenizer,
         max_seq_len=max_seq_len
     )
@@ -427,12 +428,15 @@ def train():
     
     print(f"\n[Data]")
     
-    # Check if datasets exist, otherwise generate them
-    if not os.path.exists(DataConfig.TRAIN_FILE) or not os.path.exists(DataConfig.VAL_FILE):
-        print("  Datasets not found. Generating...")
-        generate_all_datasets()
+    # Check if mixed datasets exist, otherwise generate them
+    mixed_train = "data/train_mixed.json"
+    mixed_val = "data/val_mixed.json"
+    if not os.path.exists(mixed_train) or not os.path.exists(mixed_val):
+        print("  Mixed datasets not found. Generating...")
+        from data_generator import generate_mixed_k3_k4_datasets
+        generate_mixed_k3_k4_datasets()
     else:
-        print(f"  Found existing datasets in {DataConfig.DATA_DIR}/")
+        print(f"  Found existing mixed datasets in {DataConfig.DATA_DIR}/")
     
     # Create dataloaders
     train_loader, val_loader = create_dataloaders(

@@ -65,7 +65,7 @@ class ModelConfig:
     N_HEADS = 8
     D_FF = 1024
     DROPOUT = 0.1
-    MAX_SEQ_LEN = 32
+    MAX_SEQ_LEN = 48  # Supports k=4 addition (was 32 for k=3 only)
     
     def __init__(self, task_config: TaskConfig):
         """Initialize model config with task config to get vocab size."""

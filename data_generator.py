@@ -490,8 +490,107 @@ def generate_all_datasets() -> Tuple[List[Dict], List[Dict], List[Dict]]:
     return train_data, val_data, test_data
 
 
+def generate_mixed_k3_k4_datasets(
+    train_size: int = 50000,
+    val_size: int = 5000,
+    seed: int = 42
+) -> Tuple[List[Dict], List[Dict]]:
+    """
+    Generate mixed k=3 and k=4 training/validation datasets.
+    
+    This addresses the length generalization failure by training on both
+    3-digit and 4-digit addition problems. The model can no longer rely
+    on fixed positional patterns and must learn the actual addition algorithm.
+    
+    Args:
+        train_size: Total training examples (split 50/50 between k=3 and k=4)
+        val_size: Total validation examples (split 50/50)
+        seed: Random seed for reproducibility
+        
+    Returns:
+        Tuple of (train_data, val_data)
+    """
+    print("=" * 60)
+    print("GENERATING MIXED K=3,4 DATASETS")
+    print("=" * 60)
+    
+    # Calculate split sizes
+    k3_train_size = train_size // 2
+    k4_train_size = train_size - k3_train_size
+    k3_val_size = val_size // 2
+    k4_val_size = val_size - k3_val_size
+    
+    print(f"\nConfiguration:")
+    print(f"  Training: {k3_train_size:,} k=3 + {k4_train_size:,} k=4 = {train_size:,} total")
+    print(f"  Validation: {k3_val_size:,} k=3 + {k4_val_size:,} k=4 = {val_size:,} total")
+    print()
+    
+    # Generate k=3 data
+    print("[Generating k=3 training data...]")
+    gen_k3 = AdditionDataGenerator(k_digits=3, seed=seed)
+    train_k3 = gen_k3.generate_dataset(k3_train_size, strategy="uniform", allow_duplicates=False)
+    
+    print("[Generating k=3 validation data...]")
+    val_k3 = gen_k3.generate_dataset(k3_val_size, strategy="uniform", allow_duplicates=False)
+    
+    # Generate k=4 data (different seed to avoid overlap)
+    print("[Generating k=4 training data...]")
+    gen_k4 = AdditionDataGenerator(k_digits=4, seed=seed + 1000)
+    train_k4 = gen_k4.generate_dataset(k4_train_size, strategy="uniform", allow_duplicates=False)
+    
+    print("[Generating k=4 validation data...]")
+    val_k4 = gen_k4.generate_dataset(k4_val_size, strategy="uniform", allow_duplicates=False)
+    
+    # Add k_digits field to track which examples are which
+    for ex in train_k3 + val_k3:
+        ex['k_digits'] = 3
+    for ex in train_k4 + val_k4:
+        ex['k_digits'] = 4
+    
+    # Combine and shuffle
+    rng = random.Random(seed)
+    
+    train_mixed = train_k3 + train_k4
+    rng.shuffle(train_mixed)
+    
+    val_mixed = val_k3 + val_k4
+    rng.shuffle(val_mixed)
+    
+    # Save datasets
+    print("\n[Saving mixed datasets...]")
+    Path("data").mkdir(parents=True, exist_ok=True)
+    
+    with open("data/train_mixed.json", 'w') as f:
+        json.dump(train_mixed, f, indent=2)
+    print(f"Saved {len(train_mixed)} examples to data/train_mixed.json")
+    
+    with open("data/val_mixed.json", 'w') as f:
+        json.dump(val_mixed, f, indent=2)
+    print(f"Saved {len(val_mixed)} examples to data/val_mixed.json")
+    
+    # Print statistics
+    print("\n" + "-" * 40)
+    print("MIXED DATASET STATISTICS")
+    print("-" * 40)
+    
+    for name, data in [("Train", train_mixed), ("Val", val_mixed)]:
+        k3_count = sum(1 for ex in data if ex['k_digits'] == 3)
+        k4_count = len(data) - k3_count
+        carry_count = sum(1 for ex in data if ex['requires_carry'])
+        
+        print(f"\n{name} set:")
+        print(f"  Total: {len(data):,}")
+        print(f"  k=3: {k3_count:,} ({k3_count/len(data):.1%})")
+        print(f"  k=4: {k4_count:,} ({k4_count/len(data):.1%})")
+        print(f"  With carry: {carry_count:,} ({carry_count/len(data):.1%})")
+    
+    print("\n" + "=" * 60)
+    
+    return train_mixed, val_mixed
+
+
 if __name__ == "__main__":
-    # Generate standard datasets
+    # Generate standard datasets (k=3 only - baseline)
     train_data, val_data, test_data = generate_all_datasets()
     
     # Create generator for additional test sets
@@ -517,6 +616,12 @@ if __name__ == "__main__":
     # Generate small-numbers test
     test_small = generator.generate_distribution_shift_test(size=1000, shift_type="small_numbers")
     generator.save_dataset(test_small, "data/test_shift_small_numbers.json")
+    
+    # Generate mixed k=3,4 datasets for length generalization experiment
+    print("\n" + "=" * 60)
+    print("GENERATING MIXED DATASETS FOR EXPERIMENT")
+    print("=" * 60)
+    train_mixed, val_mixed = generate_mixed_k3_k4_datasets()
     
     # Print final summary
     print("\n" + "=" * 60)

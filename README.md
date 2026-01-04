@@ -360,22 +360,3 @@ If you use this code or findings, please cite:
 ## License
 
 MIT License
-
----
-
-## Author
-
-**Elena Ajayi**  
-GitHub: [@elenaajayi](https://github.com/elenaajayi)
-
----
-
-## Acknowledgments
-
-- Cursor Pro with Claude Sonnet 4.5 & Opus 4.5 for code assistance
-- Google Colab for free T4 GPU access
-- PyTorch, Transformers, and visualization libraries
-
----
-
-*Last updated: January 2025*

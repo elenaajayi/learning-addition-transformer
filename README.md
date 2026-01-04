@@ -2,7 +2,7 @@
 
 **Investigating whether transformers learn arithmetic algorithms or memorize positional patterns through experiments on k-digit addition.**
 
-*This project was completed as part of a technical assessment. Report authored with Cursor Pro using Claude Sonnet 4.5.*
+*This project was completed as part of a work task. Report authored with Cursor Pro using Claude Sonnet 4.5.*
 
 ---
 
@@ -341,16 +341,6 @@ This demonstrates a core limitation in teaching transformers arithmetic:
 
 ---
 
-## Related Work
-
-- **Nogueira et al. (2021)**: "Investigating the Limitations of Transformers with Simple Arithmetic Tasks"
-- **Power et al. (2022)**: "Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets"
-- **Lee et al. (2023)**: "Teaching Arithmetic to Small Transformers"
-- **Charton (2021)**: "Linear Algebra with Transformers"
-- **Press et al. (2022)**: "ALiBi: Train Short, Test Long"
-
----
-
 ## Citation
 
 If you use this code or findings, please cite:
@@ -382,7 +372,7 @@ GitHub: [@elenaajayi](https://github.com/elenaajayi)
 
 ## Acknowledgments
 
-- Cursor Pro with Claude Sonnet 4.5 for code assistance
+- Cursor Pro with Claude Sonnet 4.5 & Opus 4.5 for code assistance
 - Google Colab for free T4 GPU access
 - PyTorch, Transformers, and visualization libraries
 

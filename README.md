@@ -2,7 +2,7 @@
 
 **Investigating whether transformers learn arithmetic algorithms or memorize positional patterns through experiments on k-digit addition.**
 
-*This project was completed as part of a work task. Report authored with Cursor Pro using Claude Sonnet 4.5.*
+*This project was completed as part of a work task. READme authored with Cursor Pro using Claude Sonnet 4.5.*
 
 ---
 

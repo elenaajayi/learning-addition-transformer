@@ -174,7 +174,7 @@ python train.py
 python train.py
 ```
 
-**Expected runtime**: ~27 minutes per experiment on Colab T4 GPU
+**Expected runtime**: ~30-45 minutes per experiment on Colab T4 GPU
 
 ### 4. Evaluate
 ```bash
